@@ -1,28 +1,26 @@
-// 検索したらカードが表示される（カードはSerchCard.tsx）
+// 検索したらカードが表示される（カードはSearchCard.tsx）
 
 import { ListItem, ListItemText, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import  products  from '../../data/food-expenses.json'
 
-// Propsの型定義
+// Itemの型定義
 interface Item {
-    text: string
+    name: string,
+    price: string
 }
 
 export function Search (){
-    // 対象データ（本来はjsonファイル）
-    const products: string[] = [
-        "apple",
-        "banana",
-        "orange",
-        "cheese cake",
-        "banana cake",
-        "apple juice",
-        "orange juice"
-        ]
+
+        const notProducts: Item = {
+        name: "No Item Found",
+        price: ""
+        }
+
     // productsの一覧表示(Material-UI)
     const ListItems: React.FC<Item> = (item) => (
         <ListItem alignItems="center" divider>
-        <ListItemText primary={item.text} />
+        <ListItemText primary={item.name} secondary={item.price} />
         </ListItem>
         )
 
@@ -57,10 +55,10 @@ export function Search (){
         }
     //?
         const result = products.filter((product) =>
-        searchKeywords.every((kw) => product.toLowerCase().indexOf(kw) !== -1)
+        searchKeywords.every((kw) => product.name.toLowerCase().indexOf(kw) !== -1)
     )
     //?
-    setFilteredProducts(result.length ? result : ["No Item Found"]);
+    setFilteredProducts(result.length ? result : [notProducts]);
     }, [keyword]);
 
     return(
@@ -76,7 +74,7 @@ export function Search (){
         />
         
         {showLists &&
-        filteredProducts.map((v, i) => <ListItems key={i} text={v} />)}
+        filteredProducts.map((v, i) => <ListItems key={i} name={v.name} price={v.price}/>)}
         </>
     )
 }

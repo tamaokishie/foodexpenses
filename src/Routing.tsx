@@ -6,6 +6,7 @@ import Home from './pages/home/Home'
 import { Search } from './pages/search/Search'
 
 
+
 export default function Routing() {
     return(
         <BrowserRouter>
