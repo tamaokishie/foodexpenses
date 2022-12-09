@@ -5,7 +5,7 @@ import Routing from "./Routing";
 export function App() {
   return (
     <>
-      <div>
+      <div className="App">
         <Routing/>
       </div>
     </>
