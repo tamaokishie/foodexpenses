@@ -8,7 +8,6 @@ export function App() {
       <div>
         <Routing/>
       </div>
-      <div></div>
     </>
   );
 }

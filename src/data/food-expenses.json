@@ -1,0 +1,17 @@
+[
+    {
+        "code":"food1",
+        "name":"卵",
+        "oder":0
+    },
+    {
+        "code":"food2",
+        "name":"ゆで卵",
+        "oder":1
+    },
+    {
+        "code":"food3",
+        "name":"温泉卵",
+        "oder":2
+    }
+]
