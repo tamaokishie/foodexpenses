@@ -21,7 +21,9 @@ export function Search (){
     const ListItems: React.FC<Item> = (item) => (
         <ListItem alignItems="center" divider>
         <ListItemIcon>
-            <Checkbox />
+            <Checkbox 
+                edge = "start"
+            />
         </ListItemIcon>
         <ListItemText primary={item.name} secondary={item.price} />
         
