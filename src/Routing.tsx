@@ -4,6 +4,7 @@ import Home from './pages/home/Home'
 
 // search
 import { Search } from './pages/search/Search'
+import { AllFood }from './components/parts/AllFood'
 
 
 
@@ -13,6 +14,7 @@ export default function Routing() {
         <Routes>
             <Route index element= {<Home />} />
             
+            <Route path="search" element= {<AllFood />} />
             <Route path="search" element= {<Search />} />
         </Routes>
         </BrowserRouter>

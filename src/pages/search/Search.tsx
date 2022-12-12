@@ -1,6 +1,6 @@
 // 検索したらカードが表示される（カードはSearchCard.tsx）
 
-import { ListItem, ListItemText, TextField } from "@material-ui/core";
+import { Checkbox, ListItem, ListItemIcon, ListItemText, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import  products  from '../../data/food-expenses.json'
 
@@ -20,7 +20,11 @@ export function Search (){
     // productsの一覧表示(Material-UI)
     const ListItems: React.FC<Item> = (item) => (
         <ListItem alignItems="center" divider>
+        <ListItemIcon>
+            <Checkbox />
+        </ListItemIcon>
         <ListItemText primary={item.name} secondary={item.price} />
+        
         </ListItem>
         )
 
