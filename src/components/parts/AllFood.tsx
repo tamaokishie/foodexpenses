@@ -12,21 +12,15 @@
 //     )
 // }
 
-import { Checkbox, ListItem, ListItemIcon } from "@material-ui/core";
-import React, { useState } from "react";
+interface AllFoodProps {
+    count: number
+    size: number
+}
 
-export function AllFood() {
-    const [count, setCount] = useState(0);
-
+export function AllFood({count, size}: AllFoodProps) {
     return (
     <>
-        <h2>{count}</h2>
-        <ListItem onClick={() => setCount(count + 1)}>
-        <ListItemIcon>
-            <Checkbox />
-        </ListItemIcon>
-        
-        </ListItem>
+        <h2 style={{fontSize: size}}>{ count }</h2>
     </>
     );
 }

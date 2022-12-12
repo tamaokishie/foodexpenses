@@ -2,6 +2,7 @@
 
 import { Checkbox, ListItem, ListItemIcon, ListItemText, TextField } from "@material-ui/core";
 import { useEffect, useState } from "react";
+import { AllFood } from "../../components/parts/AllFood";
 import  products  from '../../data/food-expenses.json'
 
 // Itemの型定義
@@ -10,23 +11,28 @@ interface Item {
     price: string
 }
 
-export function Search (){
 
-        const notProducts: Item = {
+export function Search (){
+    
+    const notProducts: Item = {
         name: "No Item Found",
         price: ""
-        }
-
+    }
+    
+    const [count, setCount] = useState(0);
+    
     // productsの一覧表示(Material-UI)
-    const ListItems: React.FC<Item> = (item) => (
-        <ListItem alignItems="center" divider>
+    const ListItems: React.FC<Item> = ({name, price}) => (
+        <ListItem
+            alignItems="center" divider 
+            onClick={() => {setCount(count + 1); setInputCheck(!inputCheck)}}>
         <ListItemIcon>
             <Checkbox 
+            checked = {inputCheck}
                 edge = "start"
             />
         </ListItemIcon>
-        <ListItemText primary={item.name} secondary={item.price} />
-        
+        <ListItemText primary={name} secondary={price} />
         </ListItem>
         )
 
@@ -37,6 +43,8 @@ export function Search (){
         const [showLists, setShowLists] = useState(false)
         // 検索したときにできる新たなリスト（配列）※初期値は空のため、productsを全件渡す
         const [filteredProducts, setFilteredProducts] = useState(products)
+        //クリックしたらcheckBoxにチェック(true), 何もしなかったらチェック付けない(false)
+        const [inputCheck, setInputCheck] = useState(false)
 
     // 入力したキーワードをすべて削除したら（""）、更新関数(setFilteredProducts)に初期値と同じproductsが渡される
         useEffect(() => {
@@ -81,6 +89,7 @@ export function Search (){
         
         {showLists &&
         filteredProducts.map((v, i) => <ListItems key={i} name={v.name} price={v.price}/>)}
+        <AllFood count = {count} size = {5}></AllFood>
         </>
     )
 }
