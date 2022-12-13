@@ -27,12 +27,12 @@ export function Search (){
         <ListItem
             alignItems="center" divider 
             onClick={() => 
-            {setCount(count + 1);
-            setInputCheck(!inputCheck)}}>
+                {setCount(count + 1);
+                    setInputCheck(!inputCheck);}}>
             <ListItemIcon>
                 <Checkbox 
-                checked = {inputCheck}
                     edge = "start"
+                    checked = {inputCheck}
                 />
             </ListItemIcon>
             <ListItemText primary={name} secondary={price} />
