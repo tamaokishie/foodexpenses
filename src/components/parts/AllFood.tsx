@@ -20,7 +20,7 @@ interface AllFoodProps {
 export function AllFood({count, size}: AllFoodProps) {
     return (
     <>
-        <h2 style={{fontSize: size}}>{ count }</h2>
+        <h2 style={{fontSize: size}}><br/>{ count }</h2>
     </>
     );
 }

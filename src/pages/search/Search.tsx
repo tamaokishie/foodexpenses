@@ -18,23 +18,26 @@ export function Search (){
         name: "No Item Found",
         price: ""
     }
-    
+    //カウント
     const [count, setCount] = useState(0);
-    
+    //
+
     // productsの一覧表示(Material-UI)
     const ListItems: React.FC<Item> = ({name, price}) => (
         <ListItem
             alignItems="center" divider 
-            onClick={() => {setCount(count + 1); setInputCheck(!inputCheck)}}>
-        <ListItemIcon>
-            <Checkbox 
-            checked = {inputCheck}
-                edge = "start"
-            />
-        </ListItemIcon>
-        <ListItemText primary={name} secondary={price} />
+            onClick={() => 
+            {setCount(count + 1);
+            setInputCheck(!inputCheck)}}>
+            <ListItemIcon>
+                <Checkbox 
+                checked = {inputCheck}
+                    edge = "start"
+                />
+            </ListItemIcon>
+            <ListItemText primary={name} secondary={price} />
         </ListItem>
-        )
+    )
 
     // 検索キーワードの入力を受け付けるUI
         //入力するキーワード（初期値は空）
@@ -89,7 +92,7 @@ export function Search (){
         
         {showLists &&
         filteredProducts.map((v, i) => <ListItems key={i} name={v.name} price={v.price}/>)}
-        <AllFood count = {count} size = {5}></AllFood>
+        <AllFood count = {count} size = {25}></AllFood>
         </>
     )
 }

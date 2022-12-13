@@ -17,3 +17,15 @@ header{
     text-align: center;
     margin: 6%;
 }
+h2{
+    position:fixed;
+    bottom:50px;
+    right:100px;
+    
+    background: #ececec;
+    height:110px;
+    width: 110px;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
