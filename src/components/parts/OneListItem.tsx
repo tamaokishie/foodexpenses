@@ -5,6 +5,8 @@ import { Item } from "../../models/item";
 // productsの一覧表示
 export function OneListItem({name, price}:Item){
     const [inputCheck, setInputCheck] = useState(false)
+
+    
     return(
         <ListItem
             dense
@@ -21,3 +23,5 @@ export function OneListItem({name, price}:Item){
         </ListItem>
     )
 }
+
+//checkboxをクリック（登録）して、テーブルに追加する

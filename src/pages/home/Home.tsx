@@ -6,8 +6,11 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import { Link } from 'react-router-dom'
 import  products  from '../../data/food-expenses.json'
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
+import { useState } from 'react'
+import { Search } from '../search/Search'
+import { Item } from '../../models/item'
 
 // ヘッダー、フッターの部分
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -31,31 +34,62 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     }))
 
 export default function Home() {
+    // 初期値は空白のテーブル、更新関数はチェックボックス押すこと
+    const [TableItem, setTableItem] = useState<Item[]>([])
+
+    const [open, setOpen] = useState(false)
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    }
+
+    const handleClose = () => {
+        setOpen(false);
+    }
 
     return (
         <TableContainer component={Paper}>
-        <Table>
-        <caption >
-        <Link to='search'>＋ 登録
-            </Link>
-            
-            </caption>
-            <TableHead>
-            <TableRow>
-                <StyledTableCell>朝食</StyledTableCell> 
-            </TableRow>
-            </TableHead>
-            <TableBody>
-            {products.map((row) => (
-                <StyledTableRow key={row.name}>
-                    <StyledTableCell>
-                    {row.name}
-                    <br></br>
-                    {row.price}
-                </StyledTableCell>
-                </StyledTableRow>
-                ))}
-            </TableBody>
+            <Table>
+                <caption >
+                    <Button onClick={handleClickOpen}>
+                    編集
+                    </Button>
+                    <Dialog
+                        sx={{ '& .MuiDialog-paper': { width: '100%', maxHeight: 600 } }}
+                        maxWidth="xs"
+                        open={open}
+                        onClose={handleClose}
+                        >
+                        <DialogTitle>編集</DialogTitle>
+                            <DialogContent dividers>
+                                <Search {...TableItem} />
+                            </DialogContent>
+                        <DialogActions>
+                            <Button onClick={handleClose}>更新</Button>
+                        </DialogActions>
+                    </Dialog>
+                </caption>
+                <TableHead>
+                    <TableRow>
+                        <StyledTableCell>朝食</StyledTableCell> 
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    
+                {/* onClick={() => setShowLists(true)}/>
+                {showLists &&
+                filteredProducts.map((v, i) =><OneListItem key={i} name={v.name} price={v.price}/>)} */}
+
+                {products.map((item) => (
+                    <StyledTableRow key={item.name}>
+                        <StyledTableCell>
+                        {item.name}
+                        <br></br>
+                        {item.price}
+                    </StyledTableCell>
+                    </StyledTableRow>
+                    ))}
+                </TableBody>
             </Table>
         </TableContainer>
         )

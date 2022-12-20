@@ -4,7 +4,7 @@ import { Item } from "../../models/item";
 import { OneListItem } from "../../components/parts/OneListItem";
 import  products  from '../../data/food-expenses.json'
 
-export function Search (){
+export function Search (items: Item[]){
     
     const notProducts: Item = {
         name: "No Item Found",
@@ -60,6 +60,7 @@ export function Search (){
             onClick={() => setShowLists(true)}/>
             {showLists &&
             filteredProducts.map((v, i) =><OneListItem key={i} name={v.name} price={v.price}/>)}
+            
         </>
     )
 }

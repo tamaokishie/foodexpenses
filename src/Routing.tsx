@@ -10,7 +10,7 @@ export default function Routing() {
         <BrowserRouter>
         <Routes>
             <Route index element= {<Home />} />
-            <Route path="search" element= {<Search />} />
+            {/* <Route path="search" element= {<Search />} /> */}
         </Routes>
         </BrowserRouter>
     )
