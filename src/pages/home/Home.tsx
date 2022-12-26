@@ -37,11 +37,10 @@ export default function Home() {
     const [tableItem, setTableItem] = useState<CheckItem[]>([])
     
     //☑ついてたらtrueとしてテーブルに追加
-    const upDate = () => {
-        const newItems =  [...tableItem]
+    const upDate = (newItems: CheckItem[]) => {
+        // const  =  [...tableItem]
         setTableItem (newItems)
-        
-        }
+    }
 
     const [open, setOpen] = useState(false)
 

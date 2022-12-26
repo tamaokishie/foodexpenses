@@ -8,11 +8,13 @@ import {
 import { CheckItem } from "../../models/CheckItem";
 import { Search } from '../../pages/search/Search'
 
+type hF = () => void
+type uF = (newItems: CheckItem[]) => void
 interface Props{
     open: boolean
     tableItem: CheckItem[]
-    handleClose: any
-    upDate:any
+    handleClose: hF
+    upDate: uF
 }
 
 export function SearchDialog(props: Props) {
@@ -28,7 +30,22 @@ export function SearchDialog(props: Props) {
                 <Search {...props.tableItem} />
             </DialogContent>
             <DialogActions>
-                <Button onClick={props.upDate}>更新</Button>
+                <Button 
+                    onClick={() => {
+                        props.upDate(props.tableItem
+                            .filter((item) => {
+                                if(item.checked === true) {
+                                    return item
+                                }else{
+                                    // eslint-disable-next-line array-callback-return
+                                    return
+                                }
+                            })
+                        );
+                        props.handleClose()
+                    }}>
+                    更新
+                </Button>
             </DialogActions>
         </Dialog>
     )

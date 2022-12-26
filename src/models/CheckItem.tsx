@@ -1,4 +1,4 @@
-import { Item } from '../models/item'
+import { Item } from './Item'
 
 export interface CheckItem extends Item {
     checked: boolean
