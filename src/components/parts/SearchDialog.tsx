@@ -18,31 +18,28 @@ interface Props{
 }
 
 export function SearchDialog(props: Props) {
+    const {open, handleClose, tableItem, upDate} = props
+
     return (
         <Dialog
             sx={{ "& .MuiDialog-paper": { width: "100%", maxHeight: 600 } }}
             maxWidth="xs"
-            open={props.open}
-            onClose={props.handleClose}
+            open={open}
+            onClose={handleClose}
         >
             <DialogTitle>編集</DialogTitle>
             <DialogContent dividers>
-                <Search {...props.tableItem} />
+                <Search {...tableItem} />
             </DialogContent>
             <DialogActions>
                 <Button 
                     onClick={() => {
-                        props.upDate(props.tableItem
+                        upDate(tableItem
                             .filter((item) => {
-                                if(item.checked === true) {
-                                    return item
-                                }else{
-                                    // eslint-disable-next-line array-callback-return
-                                    return
-                                }
+                                return item.checked
                             })
                         );
-                        props.handleClose()
+                        handleClose()
                     }}>
                     更新
                 </Button>

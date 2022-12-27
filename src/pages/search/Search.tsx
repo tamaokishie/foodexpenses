@@ -51,7 +51,7 @@ export function Search(items: CheckItem[]) {
     }, [keyword]);
 
     return (
-    //入力ボックス(Material-UI)
+    //入力ボックス
     <>
         <TextField
           id="field"
@@ -63,8 +63,8 @@ export function Search(items: CheckItem[]) {
         />
         {showLists &&
         filteredProducts.map((v, i) => (
-            <OneListItem key={i} name={v.name} price={v.price} checked={false}/>
+            <OneListItem key={i} name={v.name} price={v.price} />
         ))}
     </>
-    );
+    )
 }

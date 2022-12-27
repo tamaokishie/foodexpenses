@@ -33,50 +33,28 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }))
 
 export default function Home() {
-  // 初期値は空白のテーブル、更新関数はチェックボックス押すこと
+  // 初期値は空白のテーブル、更新関数は食材を選択すること
     const [tableItem, setTableItem] = useState<CheckItem[]>([])
     
-    //☑ついてたらtrueとしてテーブルに追加
+    //☑ついたらテーブルに追加
     const upDate = (newItems: CheckItem[]) => {
-        // const  =  [...tableItem]
         setTableItem (newItems)
     }
-
     const [open, setOpen] = useState(false)
-
     const handleClickOpen = () => {
         setOpen(true)
+        
     }
-
     const handleClose = () => {
         setOpen(false)
     }
 
-    // console.log(typeof(handleClose))
     return (
     <TableContainer component={Paper}>
         <Table>
             <caption>
                 <Button onClick={handleClickOpen}>編集</Button>
                 <SearchDialog open={open} tableItem={tableItem} handleClose={handleClose} upDate={upDate}/>
-                {/* <Dialog
-                    sx={{ '& .MuiDialog-paper': { width: '100%', maxHeight: 600 } }}
-                    maxWidth='xs'
-                    open={open}
-                    onClose={handleClose}
-                >
-                    <DialogTitle>編集</DialogTitle>
-                    <DialogContent dividers>
-                        <Search {...tableItem} />
-                    </DialogContent>
-                    <DialogActions>
-                        <Button 
-                            onClick={upDate}
-                            >
-                            更新
-                        </Button>
-                    </DialogActions>
-                </Dialog> */}
             </caption>
             <TableHead>
                 <TableRow>
