@@ -1,8 +1,7 @@
-import { useState } from 'react'
 import { Checkbox, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { CheckItem } from '../../models/CheckItem'
 
-// productsの一覧表示
+// 1つの食材リスト
 export function OneListItem({ name, price, checked }: CheckItem) {
     return (
         <ListItem

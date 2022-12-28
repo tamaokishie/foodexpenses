@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react'
 import { TextField } from '@material-ui/core'
 import { Item } from '../../models/Item'
 import { OneListItem } from "../../components/parts/OneListItem"
-import products from '../../data/food-expenses.json'
 import { CheckItem } from '../../models/CheckItem'
+import products from '../../data/food-expenses.json'
 
 export function Search(items: CheckItem[]) {
     const notProducts: Item = {
       name: "No Item Found",
       price: ""
-    };
+    }
 
   // 検索キーワードの入力を受け付けるUI
   //入力するキーワード（初期値は空）

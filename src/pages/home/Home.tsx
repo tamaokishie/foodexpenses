@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { styled } from '@mui/material/styles'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -7,11 +8,10 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { Button } from '@mui/material'
-import { useState } from 'react'
 import { CheckItem } from '../../models/CheckItem'
 import { SearchDialog } from '../../components/parts/SearchDialog'
 
-// ヘッダー、フッターの部分
+// ホーム画面
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -26,7 +26,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     '&:nth-of-type(odd)': {
     backgroundColor: theme.palette.action.hover,
     },
-  // hide last border
     '&:last-child td, &:last-child th': {
     border: 0,
     },
