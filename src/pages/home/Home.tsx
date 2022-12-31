@@ -9,7 +9,8 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import { Button } from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
-import { SearchDialog } from '../../components/parts/SearchDialog'
+import { Search } from '../../components/parts/Search'
+import products from '../../data/food-expenses.json'
 
 // ホーム画面
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -53,7 +54,7 @@ export default function Home() {
         <Table>
             <caption>
                 <Button onClick={handleClickOpen}>編集</Button>
-                <SearchDialog open={open} tableItem={tableItem} handleClose={handleClose}
+                <Search open={open} tableItem={tableItem} handleClose={handleClose}
                 upDate={items => upDate(items)}/>
             </caption>
             <TableHead>

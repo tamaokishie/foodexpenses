@@ -6,7 +6,7 @@ import {
     DialogTitle,
 } from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
-import { Search } from '../../pages/search/Search'
+import { SearchDialog } from '../../pages/searchDialog/SearchDialog'
 
 type hF = () => void
 type uF = (newItems: CheckItem[]) => void
@@ -17,7 +17,7 @@ interface Props{
     upDate: uF
 }
 
-export function SearchDialog(props: Props) {
+export function Search(props: Props) {
     const {open, handleClose, tableItem, upDate} = props
 
     return (
@@ -29,7 +29,7 @@ export function SearchDialog(props: Props) {
         >
             <DialogTitle>編集</DialogTitle>
             <DialogContent dividers>
-                <Search {...tableItem} />
+                <SearchDialog {...tableItem} />
             </DialogContent>
             <DialogActions>
                 <Button 

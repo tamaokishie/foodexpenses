@@ -3,12 +3,11 @@ import { TextField } from '@material-ui/core'
 import { Item } from '../../models/item'
 import { OneListItem } from "../../components/parts/OneListItem"
 import { CheckItem } from '../../models/CheckItem'
-import products from '../../data/food-expenses.json'
 
 interface Props{
     tableItem: CheckItem[]
 }
-export function Search(items: CheckItem[], props:Props) {
+export function SearchDialog(items: CheckItem[], props:Props) {
     const notProducts: Item = {
       name: "No Item Found",
       price: ""
