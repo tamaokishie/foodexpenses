@@ -11,6 +11,7 @@ import { Button } from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
 import { Search } from '../../components/parts/Search'
 import products from '../../data/food-expenses.json'
+import { Item } from '../../models/item'
 
 // ホーム画面
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,8 +34,22 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }))
 
 export default function Home() {
-  // 初期値は空白のテーブル、更新関数は食材を選択すること
-    const [tableItem, setTableItem] = useState<CheckItem[]>([])
+
+    const addChecked = (product: Item) => {
+        const newProduct: CheckItem = {
+            ...product,
+            ...{checked: false}
+        }
+        return newProduct
+    }
+    const newProducts: CheckItem[] = products.map(addChecked)
+    
+    // for (let product of products){
+    //     const newProduct = product
+    //     newProduct.checked = false
+    
+    // 初期値は空白のテーブル、更新関数は食材を選択すること
+    const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts)
     
     //☑ついたらテーブルに追加
     function upDate (newItems: CheckItem[]) {
