@@ -5,11 +5,16 @@ import { OneListItem } from "../../components/parts/OneListItem"
 import { CheckItem } from '../../models/CheckItem'
 import products from '../../data/food-expenses.json'
 
-export function Search(items: CheckItem[]) {
+interface Props{
+    tableItem: CheckItem[]
+}
+export function Search(items: CheckItem[], props:Props) {
     const notProducts: Item = {
       name: "No Item Found",
       price: ""
     }
+    const {tableItem} = props
+
 
   // 検索キーワードの入力を受け付けるUI
   //入力するキーワード（初期値は空）
@@ -17,12 +22,12 @@ export function Search(items: CheckItem[]) {
   //クリックしたらリストを表示(true), 何もしなかったら非表示(false)
     const [showLists, setShowLists] = useState(false);
   // 検索したときにできる新たなリスト（配列）※初期値は空のため、productsを全件渡す
-    const [filteredProducts, setFilteredProducts] = useState(products);
+    const [filteredProducts, setFilteredProducts] = useState(tableItem);
 
   // 入力したキーワードをすべて削除したら（""）、更新関数(setFilteredProducts)に初期値と同じproductsが渡される
     useEffect(() => {
     if (keyword === "") {
-        setFilteredProducts(products);
+        setFilteredProducts(tableItem);
         return;
     }
 
@@ -37,7 +42,7 @@ export function Search(items: CheckItem[]) {
 
     //入力されたキーワードが空白文字のみの場合
     if (searchKeywords === null) {
-        setFilteredProducts(products);
+        setFilteredProducts(tableItem);
         return;
     }
 
