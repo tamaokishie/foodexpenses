@@ -29,7 +29,7 @@ export function Search(props: Props) {
         >
             <DialogTitle>編集</DialogTitle>
             <DialogContent dividers>
-                <SearchDialog {...tableItem} />
+                <SearchDialog tableItem={tableItem} />
             </DialogContent>
             <DialogActions>
                 <Button 

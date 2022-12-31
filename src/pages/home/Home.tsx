@@ -10,8 +10,8 @@ import Paper from '@mui/material/Paper'
 import { Button } from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
 import { Search } from '../../components/parts/Search'
-import products from '../../data/food-expenses.json'
 import { Item } from '../../models/item'
+import products from '../../data/food-expenses.json'
 
 // ホーム画面
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -38,7 +38,7 @@ export default function Home() {
     const addChecked = (product: Item) => {
         const newProduct: CheckItem = {
             ...product,
-            ...{checked: true}
+            ...{checked: false}
         }
         return newProduct
     }
@@ -65,29 +65,35 @@ export default function Home() {
     <TableContainer component={Paper}>
         <Table>
             <caption>
-                <Button onClick={handleClickOpen}>編集</Button>
-                <Search open={open} tableItem={tableItem} handleClose={handleClose}
-                upDate={items => upDate(items)}/>
+                <Button 
+                    onClick={handleClickOpen}>
+                    編集
+                </Button>
+                    <Search
+                        open={open}
+                        tableItem={tableItem}
+                        handleClose={handleClose}
+                        upDate={items => upDate(items)}/>
             </caption>
-            <TableHead>
-                <TableRow>
-                <StyledTableCell>朝食</StyledTableCell>
-                </TableRow>
-            </TableHead>
-            <TableBody>
-                {tableItem.filter((item) =>{
-                    return item.checked
-                })
-                .map((item) => (
-                <StyledTableRow key={item.name}>
-                    <StyledTableCell>
-                    {item.name}
-                    <br></br>
-                    {item.price}
-                    </StyledTableCell>
-                </StyledTableRow>
-                ))}
-            </TableBody>
+                <TableHead>
+                    <TableRow>
+                    <StyledTableCell>朝食</StyledTableCell>
+                    </TableRow>
+                </TableHead>
+                    <TableBody>
+                        {tableItem.filter((item) =>{
+                            return item.checked
+                        })
+                        .map((item) => (
+                        <StyledTableRow key={item.name}>
+                            <StyledTableCell>
+                                {item.name}
+                                <br></br>
+                                {item.price}
+                            </StyledTableCell>
+                        </StyledTableRow>
+                        ))}
+                    </TableBody>
         </Table>
     </TableContainer>
     )

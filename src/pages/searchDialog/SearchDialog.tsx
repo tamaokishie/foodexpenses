@@ -7,8 +7,8 @@ import products from '../../data/food-expenses.json'
 interface Props{
     tableItem: CheckItem[]
 }
-export function SearchDialog(items: CheckItem[], props:Props) {
-    const notProducts: CheckItem = {
+export function SearchDialog(props: Props) {
+    const notTableItems: CheckItem = {
       name: "No Item Found",
       price: "",
       checked: false
@@ -19,13 +19,13 @@ export function SearchDialog(items: CheckItem[], props:Props) {
     const [keyword, setKeyword] = useState("")
   //クリックしたらリストを表示(true), 何もしなかったら非表示(false)
     const [showLists, setShowLists] = useState(false)
-  // 検索したときにできる新たなリスト（配列）※初期値は空のため、productsを全件渡す
-    const [filteredProducts, setFilteredProducts] = useState(tableItem)
+  // 検索したときにできる新たなリスト（配列）※初期値は空のため、tableItemを全件渡す
+    const [filteredTableItems, setFilteredTableItems] = useState(tableItem)
 
   // 入力したキーワードをすべて削除したら（""）、更新関数(setFilteredProducts)に初期値と同じproductsが渡される
     useEffect(() => {
     if (keyword === "") {
-        setFilteredProducts(tableItem)
+        setFilteredTableItems(tableItem)
         return
     }
 
@@ -40,7 +40,7 @@ export function SearchDialog(items: CheckItem[], props:Props) {
 
     //入力されたキーワードが空白文字のみの場合
     if (searchKeywords === null) {
-        setFilteredProducts(tableItem)
+        setFilteredTableItems(tableItem)
         return;
     }
 
@@ -50,7 +50,7 @@ export function SearchDialog(items: CheckItem[], props:Props) {
         )
     );
 
-    setFilteredProducts(result.length ? result : [notProducts])
+    setFilteredTableItems(result.length ? result : [notTableItems])
     }, [keyword])
 
     return (
@@ -65,7 +65,7 @@ export function SearchDialog(items: CheckItem[], props:Props) {
           onClick={() => setShowLists(true)}
         />
         {showLists &&
-        filteredProducts.map((v, i) => (
+        filteredTableItems.map((v, i) => (
             <OneListItem key={i} name={v.name} price={v.price} checked={v.checked} />
         ))}
     </>
