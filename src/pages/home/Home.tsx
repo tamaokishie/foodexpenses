@@ -38,15 +38,12 @@ export default function Home() {
     const addChecked = (product: Item) => {
         const newProduct: CheckItem = {
             ...product,
-            ...{checked: false}
+            ...{checked: true}
         }
         return newProduct
     }
     const newProducts: CheckItem[] = products.map(addChecked)
-    
-    // for (let product of products){
-    //     const newProduct = product
-    //     newProduct.checked = false
+
     
     // 初期値は空白のテーブル、更新関数は食材を選択すること
     const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts)
@@ -78,7 +75,10 @@ export default function Home() {
                 </TableRow>
             </TableHead>
             <TableBody>
-                {tableItem.map((item) => (
+                {tableItem.filter((item) =>{
+                    return item.checked
+                })
+                .map((item) => (
                 <StyledTableRow key={item.name}>
                     <StyledTableCell>
                     {item.name}
