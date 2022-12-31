@@ -46,7 +46,7 @@ export function Search(items: CheckItem[], props:Props) {
         return;
     }
 
-    const result = products.filter((product) =>
+    const result = tableItem.filter((product) =>
         searchKeywords.every(
         (kw) => product.name.toLowerCase().indexOf(kw) !== -1
         )
