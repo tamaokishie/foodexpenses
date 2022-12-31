@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { TextField } from '@material-ui/core'
-import { Item } from '../../models/item'
 import { OneListItem } from "../../components/parts/OneListItem"
 import { CheckItem } from '../../models/CheckItem'
 
@@ -8,9 +7,10 @@ interface Props{
     tableItem: CheckItem[]
 }
 export function SearchDialog(items: CheckItem[], props:Props) {
-    const notProducts: Item = {
+    const notProducts: CheckItem = {
       name: "No Item Found",
-      price: ""
+      price: "",
+      checked: false
     }
     const {tableItem} = props
 
