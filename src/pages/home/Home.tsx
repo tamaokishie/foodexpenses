@@ -36,7 +36,7 @@ export default function Home() {
     const [tableItem, setTableItem] = useState<CheckItem[]>([])
     
     //☑ついたらテーブルに追加
-    const upDate = (newItems: CheckItem[]) => {
+    function upDate (newItems: CheckItem[]) {
         setTableItem (newItems)
     }
     const [open, setOpen] = useState(false)
@@ -53,7 +53,8 @@ export default function Home() {
         <Table>
             <caption>
                 <Button onClick={handleClickOpen}>編集</Button>
-                <SearchDialog open={open} tableItem={tableItem} handleClose={handleClose} upDate={upDate}/>
+                <SearchDialog open={open} tableItem={tableItem} handleClose={handleClose}
+                upDate={items => upDate(items)}/>
             </caption>
             <TableHead>
                 <TableRow>

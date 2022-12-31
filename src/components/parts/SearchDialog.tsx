@@ -4,7 +4,7 @@ import {
     DialogActions,
     DialogContent,
     DialogTitle,
-} from "@mui/material";
+} from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
 import { Search } from '../../pages/search/Search'
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TextField } from '@material-ui/core'
-import { Item } from '../../models/Item'
+import { Item } from '../../models/item'
 import { OneListItem } from "../../components/parts/OneListItem"
 import { CheckItem } from '../../models/CheckItem'
 import products from '../../data/food-expenses.json'
