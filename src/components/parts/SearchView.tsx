@@ -53,7 +53,6 @@ export function SearchView(props: Props) {
   }, [keyword]);
 
   return (
-    //入力ボックス
     <>
       <TextField
         id="field"
@@ -73,5 +72,5 @@ export function SearchView(props: Props) {
           />
         ))}
     </>
-  );
+  )
 }
