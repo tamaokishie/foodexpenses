@@ -1,14 +1,17 @@
 import { useEffect, useState } from "react";
 import { TextField } from "@material-ui/core";
-import { OneListItem } from "./OneListItem";
 import { Item } from "../../models/item"
+import { Checkbox, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
 //propertyの型定義
 interface Props {
-  tableItem: Item[];
+  tableItem: Item[]
+  name:string
+  price: string
 }
+
 //propsを受け取る
-export function SearchView({ tableItem }: Props) {
+export function SearchView({ name, price, tableItem }: Props) {
     const notTableItems: Item = {
     name: "No Item Found",
     price: ""
@@ -20,6 +23,9 @@ export function SearchView({ tableItem }: Props) {
   const [showLists, setShowLists] = useState(false);
   // 検索したときにできる新たなリスト（配列）※初期値は空のため、tableItemを全件渡す
   const [filteredTableItems, setFilteredTableItems] = useState(tableItem);
+  //チェックボックスにチェックをつける
+  const [checked, setChecked] = useState(false)
+
 
   // 入力したキーワードをすべて削除したら（""）、更新関数(setFilteredProducts)に初期値と同じproductsが渡される
   useEffect(() => {
@@ -52,9 +58,16 @@ export function SearchView({ tableItem }: Props) {
     setFilteredTableItems(result.length ? result : [notTableItems]);
   }, [keyword]);
 
+  //リストをクリックするとchecked反転
+  const handleToggle = (checked: boolean) => {
+    const newChecked = !checked
+    setChecked(newChecked)
+}
+
   return (
     <>
       <TextField
+      //入力エリア
         id="field"
         color="secondary"
         variant="outlined"
@@ -63,14 +76,22 @@ export function SearchView({ tableItem }: Props) {
         onClick={() => setShowLists(true)}
       />
       {showLists &&
-        filteredTableItems.map((v, i) => (
-          <OneListItem
-            key={i}
-            name={v.name}
-            price={v.price}
-            
-          />
-        ))}
+        filteredTableItems.map(handleToggle)
+      }
+          <ListItemButton role={undefined} dense>
+          <ListItemIcon>
+              <Checkbox
+              edge="start"
+              checked={checked}
+              tabIndex={-1}
+              disableRipple
+              />
+          </ListItemIcon>
+          <ListItemText primary={name} secondary={price} />
+      </ListItemButton>
+      
+    
     </>
   )
 }
+
