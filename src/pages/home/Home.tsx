@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper'
 import { styled } from '@mui/material/styles'
 import { Button } from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
-import { Item } from '../../models/item'
+import { Item } from '../../models/Item'
 import { SearchDialog } from '../searchDialog/SearchDialog'
 import products from '../../data/food-expenses.json'
 
