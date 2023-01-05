@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import { TextField } from "@material-ui/core";
 import { OneListItem } from "./OneListItem";
-import { CheckItem } from "../../models/CheckItem";
+import { Item } from "../../models/item"
 
 //propertyの型定義
 interface Props {
-  tableItem: CheckItem[];
+  tableItem: Item[];
 }
-//propsを引数に分割代入
+//propsを受け取る
 export function SearchView({ tableItem }: Props) {
-    const notTableItems: CheckItem = {
+    const notTableItems: Item = {
     name: "No Item Found",
-    price: "",
-    checked: false,
+    price: ""
   }
 
   //入力するキーワード（初期値は空）
@@ -69,7 +68,7 @@ export function SearchView({ tableItem }: Props) {
             key={i}
             name={v.name}
             price={v.price}
-            checked={v.checked}
+            
           />
         ))}
     </>

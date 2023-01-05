@@ -25,8 +25,8 @@ export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
             <DialogTitle>編集</DialogTitle>
                 <DialogContent dividers>
                     <SearchView 
-                    //propsの受け取り
-                    tableItem={tableItem} />
+                    //propsを渡す
+                    tableItem={ tableItem } />
                 </DialogContent>
                     <DialogActions>
                         <Button

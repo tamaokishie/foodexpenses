@@ -16,23 +16,27 @@
 //     )
 // }
 
-
 import { useState } from 'react'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Checkbox from '@mui/material/Checkbox'
-import { CheckItem } from '../../models/CheckItem'
 
+interface props {
+    name: string,
+    price: string
+}
 
-export function OneListItem({ name, price }: CheckItem) {
+export function OneListItem({ name, price }: props) {
+    //チェックボックスにチェックをつける
     const [checked, setChecked] = useState(false)
 
+    //リストをクリックするとchecked反転
     const handleToggle = () => {
         const newChecked = !checked
         setChecked(newChecked)
     }
-
+    //CheckBoxとListのレイアウト
     return (
         <ListItemButton role={undefined} onClick={handleToggle} dense>
             <ListItemIcon>
