@@ -13,6 +13,7 @@ import { Item } from '../../models/Item'
 import { SearchDialog } from '../searchDialog/SearchDialog'
 import products from '../../data/food-expenses.json'
 
+//テーブルのレイアウト
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.common.black,
@@ -22,7 +23,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
         fontSize: 14
     },
     }))
-
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
     "&:nth-of-type(odd)": {
         backgroundColor: theme.palette.action.hover
@@ -33,6 +33,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     }))
 
 export default function Home() {
+    //初めのテーブルアイテムはfalseで表示
     const addChecked = (product: Item) => {
         const newProduct: CheckItem = {
             ...product,
@@ -40,11 +41,17 @@ export default function Home() {
         }
         return newProduct
 }
+    //falseにしたproductsをmapする
     const newProducts: CheckItem[] = products.map(addChecked)
+
+    //初期値はmapしたfalseのproducts
     const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts)
+
+    //新しいリストアイテムをテーブルに追加していく
     function upDate(newItems: CheckItem[]) {
         setTableItem(newItems)
     }
+
     const [open, setOpen] = useState(false)
     const handleClickOpen = () => {
         setOpen(true)
