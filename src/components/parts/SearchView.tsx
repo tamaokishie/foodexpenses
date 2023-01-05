@@ -59,7 +59,7 @@ export function SearchView({ name, price, tableItem }: Props) {
   }, [keyword]);
 
   //リストをクリックするとchecked反転
-  const handleToggle = (checked: boolean) => {
+  const handleToggle = () => {
     const newChecked = !checked
     setChecked(newChecked)
 }
