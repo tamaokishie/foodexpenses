@@ -32,7 +32,7 @@ export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
                 </DialogContent>
                     <DialogActions>
                         <Button
-                        //trueのリストアイテムをHomeのtableItemに反映させる
+                        //trueのリストアイテム(props)をHomeのtableItemに渡す
                             onClick={() => {
                                 upDate(
                                 tableItem.filter((item) => {

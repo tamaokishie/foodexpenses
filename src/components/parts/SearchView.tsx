@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TextField } from "@material-ui/core";
+import { OneListItem } from "./OneListItem";
 import { Item } from "../../models/item"
-import { Checkbox, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
 //propertyの型定義
 interface Props {
@@ -23,9 +23,6 @@ export function SearchView({ name, price, tableItem }: Props) {
   const [showLists, setShowLists] = useState(false);
   // 検索したときにできる新たなリスト（配列）※初期値は空のため、tableItemを全件渡す
   const [filteredTableItems, setFilteredTableItems] = useState(tableItem);
-  //チェックボックスにチェックをつける
-  const [checked, setChecked] = useState(false)
-
 
   // 入力したキーワードをすべて削除したら（""）、更新関数(setFilteredProducts)に初期値と同じproductsが渡される
   useEffect(() => {
@@ -58,12 +55,6 @@ export function SearchView({ name, price, tableItem }: Props) {
     setFilteredTableItems(result.length ? result : [notTableItems]);
   }, [keyword]);
 
-  //リストをクリックするとchecked反転
-  const handleToggle = () => {
-    const newChecked = !checked
-    setChecked(newChecked)
-}
-
   return (
     <>
       <TextField
@@ -76,22 +67,12 @@ export function SearchView({ name, price, tableItem }: Props) {
         onClick={() => setShowLists(true)}
       />
       {showLists &&
-        filteredTableItems.map(handleToggle)
-      }
-          <ListItemButton role={undefined} dense>
-          <ListItemIcon>
-              <Checkbox
-              edge="start"
-              checked={checked}
-              tabIndex={-1}
-              disableRipple
-              />
-          </ListItemIcon>
-          <ListItemText primary={name} secondary={price} />
-      </ListItemButton>
-      
-    
+        filteredTableItems.map((item) => (
+          <OneListItem
+            name={item.name}
+            price={item.price}
+          />
+        ))}
     </>
   )
 }
-
