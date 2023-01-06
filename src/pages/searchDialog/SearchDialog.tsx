@@ -20,6 +20,7 @@ export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
             sx={{ "& .MuiDialog-paper": { width: "100%", maxHeight: 600 } }}
             maxWidth="xs"
             open={open}
+            //DialogのonClickにhandleCloseを呼び出す
             onClose={handleClose}
         >
             <DialogTitle>編集</DialogTitle>
