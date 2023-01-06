@@ -33,11 +33,7 @@ export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
                         <Button
                         //trueのリストアイテム(props)をHomeのtableItemに渡す
                             onClick={() => {
-                                upDate(
-                                tableItem.filter((item) => {
-                                return item.checked
-                                })
-                                );
+                                upDate(tableItem);
                                 handleClose()
                             }}
                         >

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TextField } from "@material-ui/core";
-import { OneListItem } from "./OneListItem";
 import { CheckItem } from "../../models/CheckItem"
+import { Checkbox, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 
 //propertyの型定義
 interface Props {
@@ -49,10 +49,12 @@ export function SearchView({ tableItem }: Props) {
       searchKeywords.every(
         (kw) => product.name.toLowerCase().indexOf(kw) !== -1
       )
-    );
+      );
 
-    setFilteredTableItems(result.length ? result : [notTableItems]);
+      setFilteredTableItems(result.length ? result : [notTableItems]);
   }, [keyword]);
+
+  const [render, setRender] = useState(true)
 
   return (
     <>
@@ -66,11 +68,31 @@ export function SearchView({ tableItem }: Props) {
         onClick={() => setShowLists(true)}
       />
       {showLists &&
-        filteredTableItems.map((item) => (
-          <OneListItem
-            item ={item}
-          />
-        ))}
+        filteredTableItems.map((item) => {
+          //リストをクリックするとchecked反転
+          const handleToggle = () => {
+            item.checked = !item.checked
+            setRender(!render)
+          }
+          return (
+          <ListItemButton
+            role={undefined}
+            onClick={handleToggle}
+            dense
+            >
+            <ListItemIcon>
+                <Checkbox
+                    edge="start"
+                    checked={item.checked}
+                    tabIndex={-1}
+                    disableRipple
+                />
+            </ListItemIcon>
+            <ListItemText primary={item.name} secondary={item.price} />
+        </ListItemButton>
+        )
+      }
+      )}
     </>
   )
 }
