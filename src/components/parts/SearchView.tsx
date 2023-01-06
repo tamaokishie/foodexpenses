@@ -6,12 +6,10 @@ import { Item } from "../../models/item"
 //propertyの型定義
 interface Props {
   tableItem: Item[]
-  name:string
-  price: string
 }
 
 //propsを受け取る
-export function SearchView({ name, price, tableItem }: Props) {
+export function SearchView({ tableItem }: Props) {
     const notTableItems: Item = {
     name: "No Item Found",
     price: ""

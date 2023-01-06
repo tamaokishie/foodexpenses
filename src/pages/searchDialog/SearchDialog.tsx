@@ -26,9 +26,7 @@ export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
                 <DialogContent dividers>
                     <SearchView 
                     //propsを渡す
-                    tableItem={ tableItem }
-                    name={""}
-                    price={""} />
+                    tableItem={ tableItem }/>
                 </DialogContent>
                     <DialogActions>
                         <Button
