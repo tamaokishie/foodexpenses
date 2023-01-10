@@ -1,4 +1,10 @@
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material'
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from '@mui/material'
 import { CheckItem } from '../../models/CheckItem'
 import { SearchView } from '../../components/parts/SearchView'
 
@@ -8,38 +14,39 @@ type uF = (newItems: CheckItem[]) => void
 
 //propertyの型定義
 interface Props {
-    open: boolean
-    tableItem: CheckItem[]
-    handleClose: hF
-    upDate: uF
+  open: boolean
+  tableItem: CheckItem[]
+  handleClose: hF
+  upDate: uF
 }
 //propsを引数に分割代入で指定
 export function SearchDialog({ open, handleClose, tableItem, upDate }: Props) {
-    return (
-        <Dialog
-            sx={{ "& .MuiDialog-paper": { width: "100%", maxHeight: 600 } }}
-            maxWidth="xs"
-            open={open}
-            //DialogのonClickにhandleCloseを呼び出す
-            onClose={handleClose}
+  return (
+    <Dialog
+      sx={{ '& .MuiDialog-paper': { width: '100%', maxHeight: 600 } }}
+      maxWidth='xs'
+      open={open}
+      //DialogのonClickにhandleCloseを呼び出す
+      onClose={handleClose}
+    >
+      <DialogTitle>編集</DialogTitle>
+      <DialogContent dividers>
+        <SearchView
+          //propsを渡す
+          tableItem={tableItem}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button
+          //trueのリストアイテム(props)をHomeのtableItemに渡す
+          onClick={() => {
+            upDate(tableItem)
+            handleClose()
+          }}
         >
-            <DialogTitle>編集</DialogTitle>
-                <DialogContent dividers>
-                    <SearchView 
-                    //propsを渡す
-                    tableItem={ tableItem }/>
-                </DialogContent>
-                    <DialogActions>
-                        <Button
-                        //trueのリストアイテム(props)をHomeのtableItemに渡す
-                            onClick={() => {
-                                upDate(tableItem);
-                                handleClose()
-                            }}
-                        >
-                        更新
-                        </Button>
-                    </DialogActions>
-        </Dialog>
-    )
+          更新
+        </Button>
+      </DialogActions>
+    </Dialog>
+  )
 }
