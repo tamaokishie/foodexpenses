@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-import { styled } from '@mui/material/styles'
-import { Button, Grid } from '@mui/material'
-import { CheckItem } from '../../models/CheckItem'
-import { Item } from '../../models/Item'
-import { SearchDialog } from '../searchDialog/SearchDialog'
-import products from '../../data/food-expenses.json'
+import { useState } from "react";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import { Button, Grid } from "@mui/material";
+import { CheckItem } from "../../models/CheckItem";
+import { Item } from "../../models/Item";
+import { SearchDialog } from "../searchDialog/SearchDialog";
+import products from "../../data/food-expenses.json";
 
 //テーブルのレイアウト
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -22,15 +22,15 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14,
   },
-}))
+}));
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  "&:nth-of-type(odd)": {
     backgroundColor: theme.palette.action.hover,
   },
-  '&:last-child td, &:last-child th': {
+  "&:last-child td, &:last-child th": {
     border: 0,
   },
-}))
+}));
 
 export default function Home() {
   //初めのテーブルアイテムはfalseで表示
@@ -38,28 +38,28 @@ export default function Home() {
     const newProduct: CheckItem = {
       ...product,
       ...{ checked: false },
-    }
-    return newProduct
-  }
+    };
+    return newProduct;
+  };
   //falseにしたproductsをmapする
-  const newProducts: CheckItem[] = products.map(addChecked)
+  const newProducts: CheckItem[] = products.map(addChecked);
 
   //初期値はmapしたfalseのproducts
-  const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts)
+  const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts);
 
   //新しいリストアイテムをテーブルに追加していく
   function upDate(newItems: CheckItem[]) {
-    setTableItem(newItems)
+    setTableItem(newItems);
   }
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
   const handleClose = () => {
-    setOpen(false)
-  }
-  const totalPrice = 0
+    setOpen(false);
+  };
+  const totalPrice = 0;
 
   return (
     <Grid container>
@@ -79,7 +79,7 @@ export default function Home() {
             <TableHead>
               <TableRow>
                 <StyledTableCell>朝食</StyledTableCell>
-                <StyledTableCell align='right'>
+                <StyledTableCell align="right">
                   合計 : {totalPrice} 円
                 </StyledTableCell>
               </TableRow>
@@ -87,13 +87,13 @@ export default function Home() {
             <TableBody>
               {tableItem
                 .filter((item) => {
-                  return item.checked
+                  return item.checked;
                 })
                 .map((item) => (
                   <StyledTableRow key={item.name}>
                     <StyledTableCell>{item.name}</StyledTableCell>
-                    <StyledTableCell align='right'>
-                      {item.price + '円'}
+                    <StyledTableCell align="right">
+                      {item.price + "円"}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -103,5 +103,5 @@ export default function Home() {
       </Grid>
       <Grid item xs={3} />
     </Grid>
-  )
+  );
 }
