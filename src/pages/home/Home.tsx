@@ -59,7 +59,10 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
   };
-  const totalPrice = 0;
+  const price = [100, 200, 300, 400];
+  const totalPrice = price.reduce((sum: number, val: number): number => {
+    return sum + val;
+}, 0);
 
   return (
     <Grid container>
