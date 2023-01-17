@@ -59,8 +59,9 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
   };
+  const [totalPrice, setTotalPrice] = useState(0);
   const price = [100, 200, 300, 400];
-  const totalPrice = price.reduce((sum: number, val: number): number => {
+  const upDateSum = price.reduce((sum: number, val: number): number => {
     return sum + val;
 }, 0);
 
@@ -77,13 +78,14 @@ export default function Home() {
                 tableItem={tableItem}
                 handleClose={handleClose}
                 upDate={(items) => upDate(items)}
+                upDateSum={upDateSum}
               />
             </caption>
             <TableHead>
               <TableRow>
                 <StyledTableCell>朝食</StyledTableCell>
                 <StyledTableCell align="right">
-                  合計 : {totalPrice} 円
+                  合計 : {upDateSum} 円
                 </StyledTableCell>
               </TableRow>
             </TableHead>
