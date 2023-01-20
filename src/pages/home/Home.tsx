@@ -46,12 +46,12 @@ export default function Home() {
 
   //初期値はmapしたfalseのproducts
   const [tableItem, setTableItem] = useState<CheckItem[]>(newProducts);
-
-  //新しいリストアイテムをテーブルに追加していく
+  
+  //新しいリストアイテム（更新ボタンを押したときにはtrueに変わってる）をテーブルに追加していく
   function upDate(newItems: CheckItem[]) {
     setTableItem(newItems);
   }
-
+  //Dialogを開く
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -59,12 +59,26 @@ export default function Home() {
   const handleClose = () => {
     setOpen(false);
   };
-  const [totalPrice, setTotalPrice] = useState(0);
-  const price = [100, 200, 300, 400];
-  const upDateSum = price.reduce((sum: number, val: number): number => {
-    return sum + val;
-}, 0);
 
+  //合計金額を計算した値
+  const calcTotalPrice = (tableItem:CheckItem[]) => {
+    return tableItem
+      .filter((item) => {
+        return item.checked
+      })
+      .reduce((sum: number, val: CheckItem): number => {
+        return sum + val.price;
+      }, 0);
+  }
+  
+  //初期値は空の合計金額
+  const [totalPrice, setTotalPrice] = useState(calcTotalPrice(tableItem));
+
+  //合計金額を更新ボタン押されるたびに更新
+  function upDateSum (newTableItem: CheckItem[]) {
+    setTotalPrice(calcTotalPrice(newTableItem))
+  }
+  
   return (
     <Grid container>
       <Grid item xs={3} />
@@ -78,14 +92,14 @@ export default function Home() {
                 tableItem={tableItem}
                 handleClose={handleClose}
                 upDate={(items) => upDate(items)}
-                upDateSum={upDateSum}
+                upDateSum={(items) => upDateSum(items)} 
               />
             </caption>
             <TableHead>
               <TableRow>
                 <StyledTableCell>朝食</StyledTableCell>
                 <StyledTableCell align="right">
-                  合計 : {upDateSum} 円
+                  { `合計 : ${ totalPrice } 円` }
                 </StyledTableCell>
               </TableRow>
             </TableHead>

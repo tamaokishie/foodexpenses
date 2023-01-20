@@ -11,7 +11,7 @@ import { SearchView } from "../../components/parts/SearchView";
 //関数の型定義
 type hF = () => void;
 type uF = (newItems: CheckItem[]) => void;
-type usF = () => void;
+type usF = (newItems: CheckItem[]) => void;
 
 //propertyの型定義
 interface Props {
@@ -44,7 +44,7 @@ export function SearchDialog({ open, handleClose, tableItem, upDate, upDateSum }
           onClick={() => {
             upDate(tableItem);
             handleClose();
-            upDateSum();
+            upDateSum(tableItem);
           }}
         >
           更新
