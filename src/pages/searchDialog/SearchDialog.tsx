@@ -4,29 +4,35 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-} from "@mui/material";
-import { CheckItem } from "../../models/CheckItem";
-import { SearchView } from "../../components/parts/SearchView";
+} from '@mui/material'
+import { CheckItem } from '../../models/CheckItem'
+import { SearchView } from '../../components/SearchView'
 
 //関数の型定義
-type hF = () => void;
-type uF = (newItems: CheckItem[]) => void;
-type usF = (newItems: CheckItem[]) => void;
+type hF = () => void
+type uF = (newItems: CheckItem[]) => void
+type usF = (newItems: CheckItem[]) => void
 
 //propertyの型定義
 interface Props {
-  open: boolean;
-  tableItem: CheckItem[];
-  handleClose: hF;
-  upDate: uF;
-  upDateSum: usF;
+  open: boolean
+  tableItem: CheckItem[]
+  handleClose: hF
+  upDate: uF
+  upDateSum: usF
 }
 //propsを引数に分割代入で指定
-export function SearchDialog({ open, handleClose, tableItem, upDate, upDateSum }: Props) {
+export function SearchDialog({
+  open,
+  handleClose,
+  tableItem,
+  upDate,
+  upDateSum,
+}: Props) {
   return (
     <Dialog
-      sx={{ "& .MuiDialog-paper": { width: "100%", maxHeight: 600 } }}
-      maxWidth="xs"
+      sx={{ '& .MuiDialog-paper': { width: '100%', maxHeight: 600 } }}
+      maxWidth='xs'
       open={open}
       //DialogのonClickにhandleCloseを呼び出す
       onClose={handleClose}
@@ -42,14 +48,14 @@ export function SearchDialog({ open, handleClose, tableItem, upDate, upDateSum }
         <Button
           //trueのリストアイテム(props)をHomeのtableItemに渡す
           onClick={() => {
-            upDate(tableItem);
-            handleClose();
-            upDateSum(tableItem);
+            upDate(tableItem)
+            handleClose()
+            upDateSum(tableItem)
           }}
         >
           更新
         </Button>
       </DialogActions>
     </Dialog>
-  );
+  )
 }

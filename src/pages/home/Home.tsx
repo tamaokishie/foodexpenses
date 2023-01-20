@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Stack } from "@mui/material";
 import { CheckItem } from "../../models/CheckItem";
 import { Item } from "../../models/Item";
 import { SearchDialog } from "../searchDialog/SearchDialog";
@@ -80,9 +80,11 @@ export default function Home() {
   }
   
   return (
+    <>
+    <Stack direction="row">
     <Grid container>
-      <Grid item xs={3} />
-      <Grid item xs={6}>
+      <Grid item xs={1} />
+      <Grid item xs={10}>
         <TableContainer component={Paper}>
           <Table>
             <caption>
@@ -120,7 +122,93 @@ export default function Home() {
           </Table>
         </TableContainer>
       </Grid>
-      <Grid item xs={3} />
+      <Grid item xs={1} />
     </Grid>
+    <Grid container>
+      <Grid item xs={1} />
+      <Grid item xs={10}>
+        <TableContainer component={Paper}>
+          <Table>
+            <caption>
+              <Button onClick={handleClickOpen}>編集</Button>
+              <SearchDialog
+                open={open}
+                tableItem={tableItem}
+                handleClose={handleClose}
+                upDate={(items) => upDate(items)}
+                upDateSum={(items) => upDateSum(items)} 
+              />
+            </caption>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>昼食</StyledTableCell>
+                <StyledTableCell align="right">
+                  { `合計 : ${ totalPrice } 円` }
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {tableItem
+                .filter((item) => {
+                  return item.checked;
+                })
+                .map((item) => (
+                  <StyledTableRow key={item.name}>
+                    <StyledTableCell>{item.name}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {item.price + "円"}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Grid>
+      <Grid item xs={1} />
+    </Grid>
+    <Grid container>
+      <Grid item xs={1} />
+      <Grid item xs={10}>
+        <TableContainer component={Paper}>
+          <Table>
+            <caption>
+              <Button onClick={handleClickOpen}>編集</Button>
+              <SearchDialog
+                open={open}
+                tableItem={tableItem}
+                handleClose={handleClose}
+                upDate={(items) => upDate(items)}
+                upDateSum={(items) => upDateSum(items)} 
+              />
+            </caption>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell>夕食</StyledTableCell>
+                <StyledTableCell align="right">
+                  { `合計 : ${ totalPrice } 円` }
+                </StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {tableItem
+                .filter((item) => {
+                  return item.checked;
+                })
+                .map((item) => (
+                  <StyledTableRow key={item.name}>
+                    <StyledTableCell>{item.name}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {item.price + "円"}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Grid>
+      <Grid item xs={1} />
+    </Grid>
+    </Stack>
+    </>
   );
 }
