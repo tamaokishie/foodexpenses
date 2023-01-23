@@ -17,15 +17,15 @@ function appBarLabel(label: string) {
         {label}
       </Typography>
       <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
+      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <IconButton
+          size="large"
+          edge="end"
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+      </Box>
     </Toolbar>
   );
 }
@@ -37,21 +37,18 @@ export default function Home() {
       <AppBar position="static" color="primary">
         {appBarLabel('食費管理')}
       </AppBar>
-      
-        <Grid container alignItems="center" >
+      <Grid container alignItems="center" >
         <Grid item xs={12}>
             <Typography textAlign="center" component="div" variant="h5">
             一日の食費　 合計 : 3000 円
             </Typography>
+        </Grid>
       </Grid>
-      </Grid>
-    
-      
-    <Stack direction="row">
-      <MealDashboard title = "朝食"/>
-      <MealDashboard title = "昼食"/>
-      <MealDashboard title = "夕食"/> 
-    </Stack>
+      <Stack direction="row">
+        <MealDashboard title = "朝食"/>
+        <MealDashboard title = "昼食"/>
+        <MealDashboard title = "夕食"/> 
+      </Stack>
     </Stack>
     </>
   );
