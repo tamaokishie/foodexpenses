@@ -88,7 +88,7 @@ export function SearchView({ tableItem }: Props) {
             <ListItemText primary={item.name} />
             <ListItemText
               style={{ display: 'flex', justifyContent: 'flex-end' }}
-              primary={item.price + '円'}
+              primary={item.price + ' 円'}
             />
           </ListItemButton>
         )
