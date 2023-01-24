@@ -1,43 +1,18 @@
 import { useState } from 'react'
-import { AccountCircle } from '@mui/icons-material'
-import AppBar from '@mui/material/AppBar'
-import { Box, Grid, Stack } from '@mui/material'
-import Toolbar from '@mui/material/Toolbar'
+import { Grid, Stack } from '@mui/material'
 import Typography from '@mui/material/Typography'
-import IconButton from '@mui/material/IconButton'
-import MenuIcon from '@mui/icons-material/Menu'
 import { MealDashboard } from '../../components/MealDashboard'
-
-function appBarLabel(label: string) {
-  return (
-    <Toolbar>
-      <IconButton edge='start' color='inherit' sx={{ mr: 2 }}>
-        <MenuIcon />
-      </IconButton>
-      <Typography variant='h6'>{label}</Typography>
-      <Box sx={{ flexGrow: 1 }} />
-      <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-        <IconButton size='large' edge='end' color='inherit'>
-          <AccountCircle />
-        </IconButton>
-      </Box>
-    </Toolbar>
-  )
-}
+import { HeaderDrawer } from '../../components/HeaderDrawer'
 
 export default function Home() {
   const [mealPrice1, setMealPrice1] = useState(0)
   const [mealPrice2, setMealPrice2] = useState(0)
   const [mealPrice3, setMealPrice3] = useState(0)
 
-  //３つのテーブルの計算をする
-
   return (
     <>
+      <HeaderDrawer />
       <Stack spacing={5}>
-        <AppBar position='static' style={{ backgroundColor: '#01579b' }}>
-          {appBarLabel('食費管理')}
-        </AppBar>
         <Grid container alignItems='center'>
           <Grid item xs={12}>
             <Typography textAlign='center' component='div'>
