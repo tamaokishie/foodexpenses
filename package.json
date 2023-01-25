@@ -1,5 +1,6 @@
 {
   "name": "foodexpenses",
+  "homepage": "https://tamaokishie.github.io/foodexpenses",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
