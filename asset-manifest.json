@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/foodexpenses/static/css/main.96203638.css",
-    "main.js": "/foodexpenses/static/js/main.9db2d735.js",
+    "main.js": "/foodexpenses/static/js/main.7b2a5b6c.js",
     "index.html": "/foodexpenses/index.html",
     "main.96203638.css.map": "/foodexpenses/static/css/main.96203638.css.map",
-    "main.9db2d735.js.map": "/foodexpenses/static/js/main.9db2d735.js.map"
+    "main.7b2a5b6c.js.map": "/foodexpenses/static/js/main.7b2a5b6c.js.map"
   },
   "entrypoints": [
     "static/css/main.96203638.css",
-    "static/js/main.9db2d735.js"
+    "static/js/main.7b2a5b6c.js"
   ]
 }
