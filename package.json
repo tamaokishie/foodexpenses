@@ -30,8 +30,7 @@
     "build": "cross-env PUBLIC_URL=/https://github.com/tamaokishie/foodexpenses react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build",
-    "postbuild": "cp build/index.html build/404.html"
+    "deploy": "npm run build && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
