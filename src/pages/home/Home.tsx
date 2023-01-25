@@ -1,40 +1,177 @@
-import { useState } from 'react'
-import { Grid, Stack } from '@mui/material'
+import * as React from 'react'
+import { styled, useTheme } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import CssBaseline from '@mui/material/CssBaseline'
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
 import Typography from '@mui/material/Typography'
-import { MealDashboard } from '../../components/MealDashboard'
-import { HeaderDrawer } from '../../components/HeaderDrawer'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import InboxIcon from '@mui/icons-material/MoveToInbox'
+import MailIcon from '@mui/icons-material/Mail'
+import { AccountCircle } from '@mui/icons-material'
+import {TripleMealDashboard } from '../../components/TripleMealDashboard'
+
+const drawerWidth = 240
+
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+  open?: boolean
+}>(({ theme, open }) => ({
+  flexGrow: 1,
+  padding: theme.spacing(3),
+  transition: theme.transitions.create('margin', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  marginLeft: `-${drawerWidth}px`,
+  ...(open && {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  }),
+}))
+
+interface AppBarProps extends MuiAppBarProps {
+  open?: boolean
+}
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})<AppBarProps>(({ theme, open }) => ({
+  transition: theme.transitions.create(['margin', 'width'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: `${drawerWidth}px`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}))
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}))
 
 export default function Home() {
-  const [mealPrice1, setMealPrice1] = useState(0)
-  const [mealPrice2, setMealPrice2] = useState(0)
-  const [mealPrice3, setMealPrice3] = useState(0)
+  const theme = useTheme()
+  const [open, setOpen] = React.useState(false)
+
+  const handleDrawerOpen = () => {
+    setOpen(true)
+  }
+
+  const handleDrawerClose = () => {
+    setOpen(false)
+  }
 
   return (
-    <>
-      <HeaderDrawer />
-      <Stack spacing={5}>
-        <Grid container alignItems='center'>
-          <Grid item xs={12}>
-            <Typography textAlign='center' component='div'>
-              一日の食費
-            </Typography>
-            <Typography textAlign='center' component='div' variant='h5'>
-              <b>
-                合計 :{' '}
-                <b style={{ color: '#1976D2' }}>
-                  {mealPrice1 + mealPrice2 + mealPrice3}
-                </b>{' '}
-                円
-              </b>
-            </Typography>
-          </Grid>
-        </Grid>
-        <Stack direction='row'>
-          <MealDashboard title='朝食' setMealPrice={setMealPrice1} />
-          <MealDashboard title='昼食' setMealPrice={setMealPrice2} />
-          <MealDashboard title='夕食' setMealPrice={setMealPrice3} />
-        </Stack>
-      </Stack>
-    </>
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar
+        position='fixed'
+        open={open}
+        style={{ backgroundColor: '#01579b' }}
+      >
+        <Toolbar>
+          <IconButton
+            color='inherit'
+            aria-label='open drawer'
+            onClick={handleDrawerOpen}
+            edge='start'
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant='h6' noWrap component='div'>
+            食費管理
+          </Typography>
+          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+            <IconButton size='large' edge='end' color='inherit'>
+              <AccountCircle />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant='persistent'
+        anchor='left'
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'ltr' ? (
+              <ChevronLeftIcon />
+            ) : (
+              <ChevronRightIcon />
+            )}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          {[
+            'アカウント',
+            'アカウントを追加',
+            'お知らせ',
+            'プライバシー設定',
+          ].map((text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText secondary={text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {['設定', 'ヘルプとフィードバック', 'ライセンス'].map(
+            (text, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText secondary={text} />
+                </ListItemButton>
+              </ListItem>
+            )
+          )}
+        </List>
+      </Drawer>
+      <Main open={open}>
+        <DrawerHeader />
+        <TripleMealDashboard />
+      </Main>
+    </Box>
   )
 }
