@@ -1,5 +1,6 @@
 {
   "name": "foodexpenses",
+  "homepage": "https://tamaokishie.github.io/foodexpenses",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +16,8 @@
     "@types/node": "^16.18.4",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
+    "cross-env": "^7.0.3",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.5",
@@ -24,9 +27,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cross-env PUBLIC_URL=/https://github.com/tamaokishie/foodexpenses react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && gh-pages -d build",
+    "postbuild": "cp build/index.html build/404.html"
   },
   "eslintConfig": {
     "extends": [
