@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/https://github.com/tamaokishie/foodexpenses/static/css/main.96203638.css",
+    "main.js": "/https://github.com/tamaokishie/foodexpenses/static/js/main.eb40074c.js",
+    "index.html": "/https://github.com/tamaokishie/foodexpenses/index.html",
+    "main.96203638.css.map": "/https://github.com/tamaokishie/foodexpenses/static/css/main.96203638.css.map",
+    "main.eb40074c.js.map": "/https://github.com/tamaokishie/foodexpenses/static/js/main.eb40074c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.96203638.css",
+    "static/js/main.eb40074c.js"
+  ]
+}
