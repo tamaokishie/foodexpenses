@@ -3,7 +3,7 @@ import { Grid, Stack } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { MealDashboard } from './MealDashboard'
 
-export function TripleMealDashboard() {
+export function Contents() {
   const [mealPrice1, setMealPrice1] = useState(0)
   const [mealPrice2, setMealPrice2] = useState(0)
   const [mealPrice3, setMealPrice3] = useState(0)

@@ -17,9 +17,15 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
 import { AccountCircle } from '@mui/icons-material'
-import {TripleMealDashboard } from '../../components/TripleMealDashboard'
+import { Contents } from '../../components/Contents'
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import SettingsIcon from '@mui/icons-material/Settings'
+import SellIcon from '@mui/icons-material/Sell'
+import LockIcon from '@mui/icons-material/Lock'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import PersonAddAltIcon from '@mui/icons-material/PersonAddAlt'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 const drawerWidth = 240
 
@@ -136,41 +142,70 @@ export default function Home() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            'アカウント',
-            'アカウントを追加',
-            'お知らせ',
-            'プライバシー設定',
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText secondary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountCircleIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'アカウント'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <PersonAddAltIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'アカウントを追加'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <NotificationsNoneIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'お知らせ'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <LockIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'プライバシー設定'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
         </List>
         <Divider />
         <List>
-          {['設定', 'ヘルプとフィードバック', 'ライセンス'].map(
-            (text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText secondary={text} />
-                </ListItemButton>
-              </ListItem>
-            )
-          )}
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <SettingsIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'設定'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <HelpOutlineIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'ヘルプとフィードバック'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <SellIcon />
+              </ListItemIcon>
+              <ListItemText secondary={'ライセンス'}></ListItemText>
+            </ListItemButton>
+          </ListItem>
         </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <TripleMealDashboard />
+        <Contents />
       </Main>
     </Box>
   )
