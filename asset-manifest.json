@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/https://github.com/tamaokishie/foodexpenses/static/css/main.96203638.css",
-    "main.js": "/https://github.com/tamaokishie/foodexpenses/static/js/main.47e60257.js",
-    "index.html": "/https://github.com/tamaokishie/foodexpenses/index.html",
-    "main.96203638.css.map": "/https://github.com/tamaokishie/foodexpenses/static/css/main.96203638.css.map",
-    "main.47e60257.js.map": "/https://github.com/tamaokishie/foodexpenses/static/js/main.47e60257.js.map"
+    "main.css": "/foodexpenses/static/css/main.96203638.css",
+    "main.js": "/foodexpenses/static/js/main.9db2d735.js",
+    "index.html": "/foodexpenses/index.html",
+    "main.96203638.css.map": "/foodexpenses/static/css/main.96203638.css.map",
+    "main.9db2d735.js.map": "/foodexpenses/static/js/main.9db2d735.js.map"
   },
   "entrypoints": [
     "static/css/main.96203638.css",
-    "static/js/main.47e60257.js"
+    "static/js/main.9db2d735.js"
   ]
 }
