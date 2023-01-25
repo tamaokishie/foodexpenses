@@ -6,7 +6,7 @@ export default function Routing() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route  path='/foodexpenses/'  element={<Home />} />
+      <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />}/>
       </Routes>
     </BrowserRouter>
   )
